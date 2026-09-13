@@ -1,10 +1,17 @@
 :root {
-  --color-bg: #1f0f1a;
-  --color-bg-alt: #2a1a3e;
+  --color-bg: #FAF7F3;
+  --color-bg-alt: #2F1E2F;
   --color-primary: #7a2e3a;
   --color-secondary: #5c4470;
-  --color-accent: #e8a94d;
-  --color-text: #f2e8dc;
+  --color-accent: #D9B26F;
+
+  /* Ink tokens are named for the surface they sit on, not for their color.
+     Anything on the light --color-bg uses the first pair; the dark islands
+     (header, skills chips, project cards, footer) use the -on-dark pair. */
+  --color-text: #2b1c2a;        /* on light: 14.6:1 */
+  --color-text-soft: #5c4470;   /* on light: 8.2:1  */
+  --color-text-on-dark: #f2e8dc;
+  --color-muted: #c4aed6;       /* on dark only */
 
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -30,28 +37,27 @@ body {
 
 /* Header */
 header {
-  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
-  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-primary));
+  padding: var(--spacing-lg) var(--spacing-md);
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md) var(--spacing-lg);
   border-bottom: 3px solid var(--color-accent);
 }
 
-.header-content {
+.brand {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
+  gap: var(--spacing-md);
 }
 
 .logo {
-  width: 84px;
-  height: 84px;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 50%;
-  margin-bottom: var(--spacing-md);
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
   border: 2px solid var(--color-accent);
   transition: transform var(--transition-speed) ease;
 }
@@ -60,28 +66,33 @@ header {
   transform: scale(1.06) rotate(-2deg);
 }
 
-.header-content h1 {
-  font-size: 2.5rem;
+.brand-text h1 {
+  font-size: 1.5rem;
+  line-height: 1.2;
   letter-spacing: 0.03em;
   color: var(--color-accent);
 }
 
 .tagline {
-  color: var(--color-secondary);
+  color: var(--color-muted);
   font-style: italic;
-  margin-top: var(--spacing-sm);
   font-size: 1.05rem;
+}
+
+nav {
+  width: 100%;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: var(--spacing-lg);
-  margin-top: var(--spacing-md);
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 nav a {
-  color: var(--color-text);
+  display: block;
+  color: var(--color-text-on-dark);
   text-decoration: none;
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 4px;
@@ -97,7 +108,7 @@ nav a:hover {
 main {
   max-width: 800px;
   margin: 0 auto;
-  padding: var(--spacing-xl) var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
 }
 
 section {
@@ -105,7 +116,7 @@ section {
 }
 
 section h2 {
-  color: var(--color-accent);
+  color: var(--color-primary);
   border-bottom: 2px solid var(--color-secondary);
   padding-bottom: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
@@ -119,13 +130,13 @@ section h2 {
 
 #hero h2 {
   border-bottom: none;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: var(--color-text);
   line-height: 1.4;
 }
 
 #hero p {
-  color: var(--color-accent);
+  color: var(--color-primary);
   max-width: 560px;
   margin: var(--spacing-md) auto 0;
 }
@@ -139,6 +150,7 @@ section h2 {
 
 .skills-list li {
   background-color: var(--color-bg-alt);
+  color: var(--color-text-on-dark);
   border: 1px solid var(--color-secondary);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 20px;
@@ -152,6 +164,7 @@ section h2 {
 
 .project-card {
   background-color: var(--color-bg-alt);
+  color: var(--color-text-on-dark);
   border: 1px solid var(--color-secondary);
   border-radius: 8px;
   padding: var(--spacing-lg);
@@ -168,21 +181,23 @@ section h2 {
   margin-bottom: var(--spacing-sm);
 }
 
-/* Footer */
+/* Footer: mirrors the header gradient, wine on top fading down to plum */
 footer {
-  background-color: var(--color-bg-alt);
-  text-align: center;
-  padding: var(--spacing-xl) var(--spacing-md);
+  background: linear-gradient(180deg, var(--color-primary), var(--color-bg-alt));
+  color: var(--color-text-on-dark);
+  padding: var(--spacing-lg) 0;
   border-top: 3px solid var(--color-accent);
 }
 
-footer h2 {
-  color: var(--color-accent);
-  margin-bottom: var(--spacing-md);
+/* Shares main's 800px column so the footer text lines up with the body copy */
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
 }
 
 footer a {
-  color: var(--color-text);
+  color: var(--color-text-on-dark);
   transition: color var(--transition-speed) ease;
 }
 
@@ -190,28 +205,36 @@ footer a:hover {
   color: var(--color-accent);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-sm);
-  }
-
-  .header-content h1 {
-    font-size: 1.5rem;
+/* Responsive: wider screens build on the mobile base above */
+@media (min-width: 601px) {
+  header {
+    padding: var(--spacing-lg);
   }
 
   .logo {
-    width: 64px;
-    height: 64px;
+    width: 84px;
+    height: 84px;
   }
 
-  #hero h2 {
-    font-size: 1.3rem;
+  .brand-text h1 {
+    font-size: 2.25rem;
+  }
+
+  nav {
+    width: auto;
+  }
+
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
   }
 
   main {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  #hero h2 {
+    font-size: 1.6rem;
   }
 }
