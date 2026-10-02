@@ -12,13 +12,24 @@
             <img src="images/logo-mark.png" alt="Deepwood Labs logo">
             <span>Deepwood Labs</span>
         </a>
-        <nav>
-            <ul>
+        <nav aria-label="Main">
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html" aria-current="page">Contact</a></li>
             </ul>
+            <a href="contact.html" class="nav-contact" aria-current="page">Contact</a>
+            <details class="nav-menu">
+                <summary>
+                    <span class="hamburger" aria-hidden="true"></span>
+                    <span class="visually-hidden">Menu</span>
+                </summary>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </details>
         </nav>
     </header>
 
