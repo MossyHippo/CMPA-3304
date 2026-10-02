@@ -1,0 +1,25 @@
+:root {
+  --color-bg: #F5EFE3;
+  --color-text: #2B2B26;
+  --color-forest: #1F3B2D;
+  --color-accent: #7A2E3A;
+  --color-text-on-dark: #F5EFE3;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+header {
+  background-color: var(--color-forest);
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
