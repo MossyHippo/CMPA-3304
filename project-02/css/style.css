@@ -88,3 +88,223 @@ footer {
 footer a {
   color: var(--color-text-on-dark);
 }
+
+/* ---------- Header brand and navigation ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text-on-dark);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+header {
+  border-bottom: 3px solid var(--color-accent);
+}
+
+nav {
+  width: 100%;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+nav a {
+  color: var(--color-text-on-dark);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  background-image: linear-gradient(var(--color-text-on-dark), var(--color-text-on-dark));
+  background-size: 0% 2px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease;
+}
+
+nav a:hover,
+nav a:focus-visible,
+nav a[aria-current="page"] {
+  background-size: 100% 2px;
+}
+
+nav a[aria-current="page"] {
+  font-weight: bold;
+}
+
+/* ---------- Shared page pieces ---------- */
+h1, h2, h3 {
+  color: var(--color-forest);
+}
+
+.page-intro {
+  padding: 2rem 0;
+  max-width: 45rem;
+}
+
+.page-intro h1 {
+  margin-bottom: 1rem;
+}
+
+main section,
+main p,
+main ul {
+  line-height: 1.6;
+}
+
+main section {
+  margin-bottom: 2rem;
+}
+
+main section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.next-step {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+main a:not(.button) {
+  color: var(--color-accent);
+}
+
+.button {
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--color-forest);
+  transform: translateY(-2px);
+}
+
+/* ---------- Home cards ---------- */
+.card {
+  background-color: #FFFFFF80;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 1rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 16px rgba(31, 59, 45, 0.15);
+}
+
+/* ---------- Skill chips (About) ---------- */
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.skills-list li {
+  background-color: var(--color-forest);
+  color: var(--color-text-on-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.skills-list li:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+/* ---------- Case studies (Projects) ---------- */
+.case-study {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--color-accent);
+  scroll-margin-top: 1rem;
+}
+
+.case-study img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.case-study h2 {
+  margin-bottom: 0.75rem;
+}
+
+.case-study h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+}
+
+.case-study ul {
+  padding-left: 1.25rem;
+}
+
+.question {
+  color: var(--color-accent);
+  font-style: italic;
+  font-size: 1.15rem;
+}
+
+.course-label {
+  margin-top: 1rem;
+  color: #4F6B4A;
+  font-size: 0.9rem;
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 600px) {
+  nav ul {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 1000px) {
+  nav {
+    width: auto;
+  }
+
+  .case-study {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .case-study img {
+    width: 40%;
+    flex-shrink: 0;
+  }
+}
+
+/* ---------- Respect reduced-motion settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+
+  .card:hover,
+  .card:focus-within,
+  .skills-list li:hover,
+  .button:hover {
+    transform: none;
+  }
+}
